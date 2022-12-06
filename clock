@@ -1,0 +1,30 @@
+import React from "react";
+
+class Clock extends React.Component{
+    constructor(props){
+        super(props);
+    this.state = { date:props.date
+
+    }}
+    componentDidMount(){
+        console.log("ggf");
+        this.timerId= setInterval(() => {this.tick()},1000);
+    }
+
+    componentWillUnmount(){
+        clearInterval(this.timerId);
+    }
+    tick(){
+        this.setState({
+            date:new Date()
+        })
+    }
+    render(){
+        const {date} = this.state;
+
+        return <div>
+            {new Date().toLocaleTimeString()}
+        </div>;
+    }
+}
+export default Clock;
