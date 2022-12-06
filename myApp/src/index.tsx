@@ -4,6 +4,8 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { Remarkable } from 'remarkable';
+import Home from './App';
+import { IonApp } from '@ionic/react';
 
 const style1={
   marginLeft:'100px',
@@ -27,7 +29,7 @@ class MarkdownEditor extends React.Component <{}, { value: string }>   {
     super(props);
     this.md = new Remarkable();
     this.handleChange = this.handleChange.bind(this);
-    this.state = { value: 'Текст' };
+    this.state = { value:' '  };
   }
 
   handleChange(e:any) {
@@ -40,8 +42,10 @@ class MarkdownEditor extends React.Component <{}, { value: string }>   {
 
   render() {
     return (
+      <>
+      <Home />
       <div style={style1} className="MarkdownEditor">
-        <div style={child} className='cheldren'> 
+        {/* <div style={child} className='cheldren'> 
                 <label >
           Напечатайте текст здесь:
         </label>
@@ -52,19 +56,19 @@ class MarkdownEditor extends React.Component <{}, { value: string }>   {
           defaultValue={this.state.value}
         /></div>
        <div style={child} ><h4>Вывод текста:</h4>
-        <br></br>
+        <br></br> */}
         <div
           className="content"
           dangerouslySetInnerHTML={this.getRawMarkup()}
         />
       </div>
-      <App></App></div>
-
-      
+      {/* </div> */}
+      </>
         
     );
   }
 }
+
 
 root.render(<MarkdownEditor />);
 
@@ -76,4 +80,4 @@ serviceWorkerRegistration.unregister();
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();

@@ -39,6 +39,7 @@ const App: React.FC = () => (
     </IonReactRouter>
   </IonApp>
 );
+
 function Example() {
   
 }
@@ -46,21 +47,35 @@ function Example() {
 const Home: React.FC = () => {
   
 
-  const [value, setValue] = useState(null);
+  
+  function Welcome(props:any){
+    const [value, setValue] = useState(null);
 
-  const setInput = (value: any) => { 
-    setValue(value.target.value);
+    const setInput = (value: any) => { 
+      setValue(value.target.value);
+    }
+    return(
+      
+      <IonItem>
+    <IonLabel>{props.name}   </IonLabel>
+    <IonInput placeholder="Введите текст" value={value} onInput={setInput}></IonInput>
+    <p>{props.name} {value}</p>
+    </IonItem> 
+    )
   }
 
   return (
-    
-    <IonItem>
-    <IonLabel>Input </IonLabel>
-    <IonInput placeholder="Введите текст" value={value} onInput={setInput}></IonInput>
-    <p>Output {value}</p>
-  </IonItem>  );
+    <IonList>
+      
+    <Welcome name="FIO:"/>
+    <Welcome name="Number:"/>
+    <Welcome name="Email:"/>
+    <Welcome name="Age:"/>
+    <Welcome name="Bio:"/>
+    </IonList>
+   );
  
  
 };
 
-export default App;
+export default Home;
